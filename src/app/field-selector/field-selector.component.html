@@ -1,0 +1,8 @@
+<ng-container *ngIf="fields">
+  <ul class="field-category-list">
+    <app-field
+      *ngFor="let field of fields;"
+      [field]=field>
+    </app-field>
+  </ul>
+</ng-container>

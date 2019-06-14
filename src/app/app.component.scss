@@ -1,0 +1,44 @@
+// COLOR PALETTE
+$picton-blue: #30bced;
+$tuna: #303036;
+$tutu: #fffaff;
+$outrageous-orange: #fc5130;
+$acadia: #050401;
+
+// FONTS
+$Roboto: 'Roboto', sans-serif;
+$Montserrat: 'Montserrat', sans-serif;
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: $tutu;
+  font-family: $Roboto;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, p, dl, dt, dd {
+  margin: 0;
+  padding: 0;
+  font-family: $Roboto;
+  color: $acadia;
+}
+
+.viewport {
+  height: 100vh;
+}
+
+aside,
+section {
+  height: 100vh;
+}
+
+aside {
+  background-color: $tuna;
+}
+
+section {
+  overflow-y: hidden;
+}

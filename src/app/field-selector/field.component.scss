@@ -1,0 +1,64 @@
+// BUTTON FONT
+$Montserrat: 'Montserrat', sans-serif;
+
+// COMPONENT COLORS
+$default-color-text: #fffaff;
+$field-selected-bg-color: #fc5130;
+$field-selected-text-color: #303036;
+
+li {
+  font-family: $Montserrat;
+  color: $default-color-text;
+  padding: 19px 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -webkit-transition: all 0.1s ease;
+  border-bottom: 1px solid rgba(255,255,255, 0.05);
+
+  &:before {
+    content: "";
+    width: 0;
+    height: 100%;
+    background-color: $field-selected-bg-color;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    transition: width 0.2s ease-in-out;
+    -moz-transition: width 0.2s ease-in-out;
+    -webkit-transition: width 0.2s ease-in-out;
+  }
+
+  &:hover {
+    &:before {
+      width: 3px;
+    }
+    span {
+      padding-left: 3px;
+    }
+  }
+
+  &.selected {
+    color: $field-selected-text-color;
+    &:before {
+      width: 100%;
+    }
+    span {
+      padding-left: 3px;
+    }
+  }
+
+  span {
+    position: relative;
+    transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+  }
+}

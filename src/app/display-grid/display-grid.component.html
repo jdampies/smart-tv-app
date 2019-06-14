@@ -1,0 +1,33 @@
+<div
+  #elRef
+  class="image-grid">
+  <div
+    class="image-container"
+    *ngFor="let project of projects;"
+    [ngStyle]="{
+      'top': project.yPos + '%',
+      'left': project.xPos + '%'
+    }">
+
+    <ng-container *ngFor="let coverKey of getKeys(project.covers); let i = index;">
+
+      <ng-container *ngIf="i == 4">
+        <div class="image">
+          <div
+            [ngStyle]="{
+              background: 'url(' + project.covers[coverKey] + ') center no-repeat',
+              'background-size': 'cover',
+              'width': '100%',
+              'height': '100%'
+            }">
+            <span class="image-title">
+              <a href="{{ project.url }}" target="_blank">{{ project.name }}</a>
+            </span>
+          </div>
+        </div>
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+</div>
