@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StateAndDispatcher } from './state-and-dispatcher';
 import { map } from 'rxjs/operators';
-import { Field } from './field';
-import { Project } from './project';
+import { Field } from './interfaces/field.interface';
+import { Project } from './interfaces/project.interface';
 import { Observable } from 'rxjs';
 
 @Component({

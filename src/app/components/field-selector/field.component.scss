@@ -8,6 +8,7 @@ $field-selected-text-color: #303036;
 
 li {
   font-family: $Montserrat;
+  font-size: 15px;
   color: $default-color-text;
   padding: 19px 15px;
   margin-left: -15px;
@@ -41,7 +42,7 @@ li {
       width: 3px;
     }
     span {
-      padding-left: 3px;
+      padding-left: 5px;
     }
   }
 

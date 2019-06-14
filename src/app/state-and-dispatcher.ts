@@ -1,8 +1,8 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Store } from './store';
-import { BaseService } from './base.service';
-import { Field } from './field';
-import { Project } from './project';
+import { BaseService } from './services/base.service';
+import { Field } from './interfaces/field.interface';
+import { Project } from './interfaces/project.interface';
 
 export class ModelState {
   client_id: string = "jVW6FSzwGV33StOvuK96k8D9ZV71embF";
@@ -10,8 +10,7 @@ export class ModelState {
   fields: Field[];
   selectedField: string;
   ui = {
-    counter: 0,
-    imageWidth: 0
+    counter: 0
   }
 }
 
@@ -57,7 +56,7 @@ export class StateAndDispatcher extends Store<ModelState>{
             if(data.http_code === 200){
               this.dispatch("SAVE_PROJECTS", data.projects);
 
-              console.log(this.state.projects);
+              // console.log(this.state.projects);
             }
           }
         )
@@ -68,6 +67,9 @@ export class StateAndDispatcher extends Store<ModelState>{
           ...this.state,
           projects: payload
         })
+
+        this.dispatch("RESET_COUNTER");
+
         break;
 
       case "SLIDE_LEFT":
@@ -87,6 +89,17 @@ export class StateAndDispatcher extends Store<ModelState>{
           ui: {
             ...this.state.ui,
             counter: this.state.ui.counter + 1
+          }
+        })
+
+        break;
+
+      case "RESET_COUNTER":
+        this.setState({
+          ...this.state,
+          ui: {
+            ...this.state.ui,
+            counter: 0
           }
         })
 

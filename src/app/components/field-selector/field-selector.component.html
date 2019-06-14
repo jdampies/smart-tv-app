@@ -1,8 +1,9 @@
 <ng-container *ngIf="fields">
   <ul class="field-category-list">
     <app-field
-      *ngFor="let field of fields;"
-      [field]=field>
+      *ngFor="let field of fields; let i = index;"
+      [field]=field
+      [firstIndex]="i">
     </app-field>
   </ul>
 </ng-container>

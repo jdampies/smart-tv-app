@@ -8,6 +8,7 @@ $acadia: #050401;
 // FONTS
 $Roboto: 'Roboto', sans-serif;
 $Montserrat: 'Montserrat', sans-serif;
+$PlayFairDisplay: 'Playfair Display', serif;
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -37,8 +38,39 @@ section {
 
 aside {
   background-color: $tuna;
+  overflow-y: scroll;
+  left: -100%;
+  transition: left 0.3s ease-in;
+  animation: load 0.3s forwards;
+}
+
+@keyframes load {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes load {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
 }
 
 section {
   overflow-y: hidden;
+}
+
+.logo {
+  background: url('/assets/behance.png') center left no-repeat;
+  position: absolute;
+  height: 60px;
+  width: 100%;
+  bottom: 10px;
+  left: 10px;
 }

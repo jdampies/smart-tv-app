@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
-import { StateAndDispatcher } from '../state-and-dispatcher';
-import { Observable } from 'rxjs';
+import { StateAndDispatcher } from 'src/app/state-and-dispatcher';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -16,8 +16,7 @@ export class DisplayControlComponent implements OnInit {
   counter$: Observable<number>;
   counter: number;
 
-  imageWidth$: Observable<number>;
-  imageWidth: number;
+  count: Subscription;
 
   constructor(
     private store: StateAndDispatcher,
@@ -28,10 +27,7 @@ export class DisplayControlComponent implements OnInit {
     this.counter$ = this.store.observe()
       .pipe(map(state => state.ui.counter))
 
-    this.imageWidth$ = this.store.observe()
-      .pipe(map(state => state.ui.imageWidth))
-
-    this.counter$.subscribe(() => {
+    this.count = this.counter$.subscribe(() => {
       this.counter = this.store.state.ui.counter;
 
       this.showHideLeftButton();
@@ -64,5 +60,9 @@ export class DisplayControlComponent implements OnInit {
 
   slideGridRight() {
     this.store.dispatch("SLIDE_RIGHT");
+  }
+
+  ngOnDestroy() {
+    this.count.unsubscribe();
   }
 }

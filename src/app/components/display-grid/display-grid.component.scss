@@ -1,0 +1,132 @@
+// IMAGE TEXT FONT
+$PlayFairDisplay: 'Playfair Display', serif;
+$line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
+
+.image-grid {
+  position: absolute;
+  width: 100%;
+  transition: all 0.4s cubic-bezier(0.87, 0.18, 0.83, 0.67);
+  height: 100vh;
+}
+
+.image-container {
+  position: absolute;
+  max-width: 33.3%;
+  width: 100%;
+  height: 50%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+
+  .image-inner{
+    // cursor: pointer;
+    position: relative;
+
+    transition: transform 0.15s ease-in-out;
+    -moz-transition: transform 0.15s ease-in-out;
+    -webkit-transition: transform 0.15s ease-in-out;
+
+    .image-title {
+      position: absolute;
+      display: block;
+      top:0;
+      left:0;
+      bottom:0;
+      right: 0;
+      margin: auto;
+      background-color: rgba(5,4,1,0.6);
+      opacity: 0;
+
+      transition: opacity 0.2s ease;
+      -moz-transition: opacity 0.2s ease;
+      -webkit-transition: opacity 0.2s ease;
+
+      transition-delay: 0.1s;
+      -moz-transition-delay: 0.1s;
+      -webkit-transition-delay: 0.1s;
+
+      span {
+        display: block;
+        position: absolute;
+        top: 38%;
+        left:0;
+        right: 0;
+        margin: auto;
+
+        &:before,
+        &:after {
+          content: "";
+          width: 80%;
+          height: 2px;
+          position: absolute;
+          right: 0;
+          left: 0;
+          margin: auto;
+          background-color: #fff;
+          visibility: hidden;
+          -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+          -webkit-transition: $line-transition;
+          transition: $line-transition;
+        }
+
+        &:before {
+          top: -10px;
+        }
+
+        &:after {
+          bottom: -10px;
+        }
+      }
+
+      h2, a {
+        font-family: $PlayFairDisplay;
+        color: #fff;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        margin-top: 0;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        @media only screen and (min-width: 1200px){
+          font-size: 30px;
+        }
+      }
+
+      a {
+        display: block;
+        font-size: 16px;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.02);
+
+      .image-title {
+        opacity: 1;
+
+        span {
+          &:before,
+          &:after {
+            visibility: visible;
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+
+  }
+}

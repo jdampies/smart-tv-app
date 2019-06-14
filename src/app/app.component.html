@@ -1,17 +1,24 @@
 <main class="container-fluid viewport">
   <div class="row">
-    <aside
-      class="col-xs-2 col-sm-2"
-      *ngIf="fields">
-      <app-field-selector [fields]="fields"></app-field-selector>
-    </aside>
 
-    <section
-      class="col-xs-10 col-sm-10"
+    <ng-container
+      *ngIf="fields;">
+
+      <aside class="col-xs-2 col-sm-2">
+        <app-field-selector [fields]="fields"></app-field-selector>
+      </aside>
+
+    </ng-container>
+
+    <ng-container
       *ngIf="projects">
-      <app-display-control></app-display-control>
 
-      <app-display-grid [projects]="projects"></app-display-grid>
-    </section>
+      <section class="col-xs-10 col-sm-10">
+        <app-display-control></app-display-control>
+        <app-display-grid [projects]="projects"></app-display-grid>
+      </section>
+
+    </ng-container>
+    
   </div>
 </main>

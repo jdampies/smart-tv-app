@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnChanges, Renderer2, ViewChild, ElementRef } from '@angular/core';
-import { Project } from '../project';
-import { Observable } from 'rxjs';
-import { StateAndDispatcher } from '../state-and-dispatcher';
+import { Project } from 'src/app/interfaces/project.interface';
+import { Observable, Subscription } from 'rxjs';
+import { StateAndDispatcher } from 'src/app/state-and-dispatcher';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -14,6 +14,8 @@ export class DisplayGridComponent implements OnInit, OnChanges {
 
   counter$: Observable<number>;
   counter: number = 0;
+
+  count: Subscription;
 
   @ViewChild('elRef') _host: ElementRef;
 
@@ -30,7 +32,7 @@ export class DisplayGridComponent implements OnInit, OnChanges {
     this.counter$ = this.store.observe()
       .pipe(map(state => state.ui.counter))
 
-    this.counter$.subscribe(() => {
+    this.count = this.counter$.subscribe(() => {
       this.counter = this.store.state.ui.counter;
 
       this._renderer.setStyle(this._host.nativeElement, 'left', this.counter * 33.3 + '%');
@@ -61,5 +63,9 @@ export class DisplayGridComponent implements OnInit, OnChanges {
 
   getKeys(obj:any){
     return Object.keys(obj)
+  }
+
+  ngOnDestroy() {
+    this.count.unsubscribe();
   }
 }

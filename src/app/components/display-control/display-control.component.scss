@@ -1,0 +1,48 @@
+// BUTTON COLORS
+$button-hover-blue: #30bced;
+$button-text-hover-white: #fff;
+
+.btn {
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  display: block;
+  top: 0;
+  border-radius: 0;
+  z-index: 1;
+  background-color: $button-text-hover-white;
+  transition: all 0.2s ease-in;
+  filter: opacity(0.4);
+
+  &.left {
+    left: 0;
+  }
+
+  &.right {
+    right: 0;
+  }
+
+  &:hover {
+    filter: none;
+  }
+
+  &:active {
+    background-color: $button-hover-blue;
+    color: $button-text-hover-white;
+  }
+
+  .fas {
+    font-size: 30px;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      height: 30px;
+      width: 25px;
+    }
+  }
+}

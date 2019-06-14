@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export const API_URLS = {
-  fetchBehanceFields: 'https://cors-anywhere.herokuapp.com/https://api.behance.net/v2/fields?',
-  fetchBehanceProjects: 'https://cors-anywhere.herokuapp.com/https://api.behance.net/v2/projects?',
+  fetchBehanceFields: 'https://cors.io/?https://api.behance.net/v2/fields?',
+  fetchBehanceProjects: 'https://cors.io/?https://api.behance.net/v2/projects?',
 }
 
 let headers = new HttpHeaders({
