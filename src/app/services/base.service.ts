@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-// NOTE: Made use of alternative below to cors.io because heroku server goes down periodically.
+// NOTE: Made use of alternative to cors.io listed below because heroku server goes down periodically.
 // https://cors.io/?https://api.behance.net/v2/fields? becomes
 // https://cors-anywhere.herokuapp.com/https://api.behance.net/v2/fields?
 
