@@ -5,7 +5,10 @@ $line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
 .image-grid {
   position: absolute;
   width: 100%;
-  transition: all 0.4s cubic-bezier(0.87, 0.18, 0.83, 0.67);
+  transition: left 0.25s cubic-bezier(0.87, 0.18, 0.83, 0.67);
+  -moz-transition: left 0.25s cubic-bezier(0.87, 0.18, 0.83, 0.67);
+  -webkit-transition: left 0.25s cubic-bezier(0.87, 0.18, 0.83, 0.67);
+  -webkit-transform: translateZ(0);
   height: 100vh;
 }
 
@@ -16,18 +19,41 @@ $line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
   height: 50%;
 }
 
+@mixin hardware-acceleration() {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+
+  perspective: 1000;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+}
+
 .image {
   width: 100%;
   height: 100%;
   padding: 15px;
 
+  animation: fade-in 0.3s ease-in-out forwards;
+
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+
+  will-change: transform, opacity;
+
+  -webkit-transform: translateZ(0);
+
+  @include hardware-acceleration;
+
   .image-inner{
-    // cursor: pointer;
     position: relative;
 
     transition: transform 0.15s ease-in-out;
     -moz-transition: transform 0.15s ease-in-out;
     -webkit-transition: transform 0.15s ease-in-out;
+
+    @include hardware-acceleration;
 
     .image-title {
       position: absolute;
@@ -40,6 +66,8 @@ $line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
       background-color: rgba(5,4,1,0.6);
       opacity: 0;
 
+      will-change: transform, opacity;
+
       transition: opacity 0.2s ease;
       -moz-transition: opacity 0.2s ease;
       -webkit-transition: opacity 0.2s ease;
@@ -47,6 +75,8 @@ $line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
       transition-delay: 0.1s;
       -moz-transition-delay: 0.1s;
       -webkit-transition-delay: 0.1s;
+
+      @include hardware-acceleration;
 
       span {
         display: block;
@@ -71,6 +101,8 @@ $line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
           transform: scaleX(0);
           -webkit-transition: $line-transition;
           transition: $line-transition;
+
+          @include hardware-acceleration;
         }
 
         &:before {
@@ -113,6 +145,7 @@ $line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
 
     &:hover {
       transform: scale(1.02);
+      -webkit-transform: scale(1.02);
 
       .image-title {
         opacity: 1;
@@ -128,5 +161,31 @@ $line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
       }
     }
 
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
   }
 }

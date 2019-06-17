@@ -16,12 +16,16 @@ export class DisplayControlComponent implements OnInit {
   counter$: Observable<number>;
   counter: number;
 
+  fullScreen$: Observable<boolean>;
+  fullScreen: boolean;
+
   count: Subscription;
+  full: Subscription;
 
   constructor(
     private store: StateAndDispatcher,
     private _renderer: Renderer2
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.counter$ = this.store.observe()
@@ -33,6 +37,13 @@ export class DisplayControlComponent implements OnInit {
       this.showHideLeftButton();
 
       this.showHideRightButton();
+    })
+
+    this.fullScreen$ = this.store.observe()
+      .pipe(map(state => state.ui.fullScreen))
+
+    this.full = this.fullScreen$.subscribe(() => {
+      this.fullScreen = this.store.state.ui.fullScreen;
     })
   }
 
@@ -62,7 +73,12 @@ export class DisplayControlComponent implements OnInit {
     this.store.dispatch("SLIDE_RIGHT");
   }
 
+  exitFullScreen() {
+    this.store.dispatch("EXIT_FULL_SCREEN");
+  }
+
   ngOnDestroy() {
     this.count.unsubscribe();
+    this.full.unsubscribe();
   }
 }

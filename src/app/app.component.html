@@ -1,24 +1,40 @@
 <main class="container-fluid viewport">
   <div class="row">
 
-    <ng-container
-      *ngIf="fields;">
+    <aside
+      #menu>
+      <ng-container
+        *ngIf="fields;">
+        <div
+          class="aside-inner col-xs-2 col-sm-2">
+          <app-field-selector [fields]="fields"></app-field-selector>
+        </div>
+      </ng-container>
 
-      <aside class="col-xs-2 col-sm-2">
-        <app-field-selector [fields]="fields"></app-field-selector>
-      </aside>
+      <div class="logo"></div>
+    </aside>
 
-    </ng-container>
-
-    <ng-container
-      *ngIf="projects">
-
-      <section class="col-xs-10 col-sm-10">
+    <section
+      #grid
+      class="col-xs-10 col-sm-10">
+      <ng-container
+        *ngIf="projects">
         <app-display-control></app-display-control>
         <app-display-grid [projects]="projects"></app-display-grid>
-      </section>
+      </ng-container>
 
-    </ng-container>
-    
+      <div
+        #loader
+        class="loader fixed">
+        <div class="sk-folding-cube">
+          <div class="sk-cube1 sk-cube"></div>
+          <div class="sk-cube2 sk-cube"></div>
+          <div class="sk-cube4 sk-cube"></div>
+          <div class="sk-cube3 sk-cube"></div>
+        </div>
+      </div>
+
+    </section>
+
   </div>
 </main>

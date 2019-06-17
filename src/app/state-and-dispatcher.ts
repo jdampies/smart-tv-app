@@ -10,7 +10,9 @@ export class ModelState {
   fields: Field[];
   selectedField: string;
   ui = {
-    counter: 0
+    counter: 0,
+    loading: true,
+    fullScreen: false
   }
 }
 
@@ -30,7 +32,8 @@ export class StateAndDispatcher extends Store<ModelState>{
             if(data.http_code === 200){
               this.dispatch("SAVE_FIELDS", data.popular);
             }
-          }
+          },
+          (err) => console.error(err)
         )
         break;
 
@@ -46,19 +49,25 @@ export class StateAndDispatcher extends Store<ModelState>{
           ...this.state,
           selectedField: payload
         })
+
         this.dispatch("FETCH_PROJECTS");
+
+        this.dispatch("RESET_COUNTER");
 
         break;
 
       case "FETCH_PROJECTS":
+        this.dispatch("SHOW_LOADER", true);
+
         this.baseService.getProjects(this.state.client_id, this.state.selectedField).subscribe(
           (data:any) => {
             if(data.http_code === 200){
-              this.dispatch("SAVE_PROJECTS", data.projects);
+              this.dispatch("SHOW_LOADER", false);
 
-              // console.log(this.state.projects);
+              this.dispatch("SAVE_PROJECTS", data.projects);
             }
-          }
+          },
+          (err) => console.error(err)
         )
         break;
 
@@ -67,8 +76,6 @@ export class StateAndDispatcher extends Store<ModelState>{
           ...this.state,
           projects: payload
         })
-
-        this.dispatch("RESET_COUNTER");
 
         break;
 
@@ -81,6 +88,8 @@ export class StateAndDispatcher extends Store<ModelState>{
           }
         })
 
+        this.dispatch("SET_FULL_SCREEN");
+
         break;
 
       case "SLIDE_RIGHT":
@@ -92,6 +101,8 @@ export class StateAndDispatcher extends Store<ModelState>{
           }
         })
 
+        this.dispatch("SET_FULL_SCREEN");
+
         break;
 
       case "RESET_COUNTER":
@@ -100,6 +111,42 @@ export class StateAndDispatcher extends Store<ModelState>{
           ui: {
             ...this.state.ui,
             counter: 0
+          }
+        })
+
+        break;
+
+      case "SET_FULL_SCREEN":
+        if(!this.state.ui.fullScreen) {
+          this.setState({
+            ...this.state,
+            ui: {
+              ...this.state.ui,
+              fullScreen: true
+            }
+          })
+
+        }
+
+        break;
+
+      case "EXIT_FULL_SCREEN":
+        this.setState({
+          ...this.state,
+          ui: {
+            ...this.state.ui,
+            fullScreen: false
+          }
+        })
+
+        break;
+
+      case "SHOW_LOADER":
+        this.setState({
+          ...this.state,
+          ui: {
+            ...this.state.ui,
+            loading: payload
           }
         })
 

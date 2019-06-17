@@ -1,2 +1,10 @@
 <div #left class="btn left" (click)="slideGridRight()"><i class="fas fa-chevron-left"></i></div>
 <div #right class="btn right" (click)="slideGridLeft()"><i class="fas fa-chevron-right"></i></div>
+
+<ng-container
+  *ngIf="fullScreen">
+  <div class="btn exit" (click)="exitFullScreen()">
+    <i class="fas fa-expand"></i>
+    <span>Exit Full Screen</span>
+  </div>
+</ng-container>

@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Serving compiled files over a local server
+
+Run `npm install http-server -g` to install [Http-Server](https://github.com/indexzero/http-server) which will allow you to run a config free static file server from the command line.
+
+Once installed, then from the terminal navigate to the compiled files directory `/dist/{app-name}` and run `http-server -a localhost`.
