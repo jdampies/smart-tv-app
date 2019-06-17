@@ -97,9 +97,7 @@ export class AppComponent implements OnInit {
   }
 
   removeFixedLoaderCssClass() {
-    if(this.initLoad){
-      this._renderer.removeClass(this.loader.nativeElement, 'fixed');
-    }
+    this._renderer.removeClass(this.loader.nativeElement, 'fixed');
   }
 
   enterExitFullScreen() {
