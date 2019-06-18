@@ -8,6 +8,7 @@ $line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
   transition: left 0.25s cubic-bezier(0.87, 0.18, 0.83, 0.67);
   -moz-transition: left 0.25s cubic-bezier(0.87, 0.18, 0.83, 0.67);
   -webkit-transition: left 0.25s cubic-bezier(0.87, 0.18, 0.83, 0.67);
+  will-change: left;
   -webkit-transform: translateZ(0);
   height: 100vh;
 }
@@ -40,10 +41,6 @@ $line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
 
-  will-change: transform, opacity;
-
-  -webkit-transform: translateZ(0);
-
   @include hardware-acceleration;
 
   .image-inner{
@@ -66,7 +63,7 @@ $line-transition: all .4s cubic-bezier(1,.25,0,.75) 0s;
       background-color: rgba(5,4,1,0.6);
       opacity: 0;
 
-      will-change: transform, opacity;
+      will-change: transform;
 
       transition: opacity 0.2s ease;
       -moz-transition: opacity 0.2s ease;

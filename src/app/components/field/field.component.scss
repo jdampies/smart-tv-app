@@ -21,8 +21,15 @@ li {
   -webkit-transition: all 0.1s ease;
   border-bottom: 1px solid rgba(255,255,255, 0.05);
 
-  &:before {
-    content: "";
+  .field-text {
+    position: relative;
+    transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    z-index: 1;
+  }
+
+  .highlight {
     width: 0;
     height: 100%;
     background-color: $field-selected-bg-color;
@@ -35,33 +42,26 @@ li {
     transition: width 0.2s ease-in-out;
     -moz-transition: width 0.2s ease-in-out;
     -webkit-transition: width 0.2s ease-in-out;
-
+    z-index: 0;
     will-change: width;
   }
 
   &:hover {
-    &:before {
+    .highlight {
       width: 3px;
     }
-    span {
+    .field-text {
       padding-left: 5px;
     }
   }
 
   &.selected {
     color: $field-selected-text-color;
-    &:before {
+    .highlight {
       width: 100%;
     }
-    span {
+    .field-text {
       padding-left: 3px;
     }
-  }
-
-  span {
-    position: relative;
-    transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -webkit-transition: all 0.1s ease-in-out;
   }
 }

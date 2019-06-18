@@ -1,9 +1,9 @@
 <ng-container *ngIf="fields">
   <ul class="field-category-list">
     <app-field
-      *ngFor="let field of fields; let i = index;"
+      *ngFor="let field of fields; let first = first; trackBy: trackField;"
       [field]=field
-      [firstIndex]="i">
+      [isFirst]="first">
     </app-field>
   </ul>
 </ng-container>

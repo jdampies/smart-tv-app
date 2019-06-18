@@ -65,6 +65,11 @@ export class DisplayGridComponent implements OnInit, OnChanges {
     return Object.keys(obj)
   }
 
+  trackProject(index, project){
+    // console.log(project);
+    return project ? project.id : undefined;
+  }
+
   ngOnDestroy() {
     this.count.unsubscribe();
   }

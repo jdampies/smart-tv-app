@@ -33,6 +33,12 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, p, dl, dt, dd {
   height: 100vh;
 }
 
+aside {
+  &.off-page {
+    margin-left: -100%;
+  }
+}
+
 .aside-inner,
 section {
   height: 100vh;
@@ -45,12 +51,10 @@ section {
   -moz-transition: all 0.3s ease-in;
   -webkit-transition: all 0.3s ease-in;
   animation: load 0.3s forwards;
-  will-change: transform;
 }
 
 section {
   overflow: hidden;
-  will-change: width;
 
   &.full-width {
     width: 100%;
@@ -232,7 +236,7 @@ section {
   position: absolute;
   height: 45px;
   width: 100%;
-  bottom: 10px;
+  bottom: 15px;
   left: 10px;
   opacity: 0;
   visibility: hidden;

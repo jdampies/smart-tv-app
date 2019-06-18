@@ -2,5 +2,8 @@
   [attr.id]="field.encoded_name"
   (click)="selectField()"
   [class]="setSelected()">
-    <span>{{ field.name }}</span>
+    <span class="highlight"></span>
+    <span class="field-text">
+      {{ field.name }}
+    </span>
 </li>

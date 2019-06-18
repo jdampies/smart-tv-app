@@ -11,7 +11,7 @@ import { StateAndDispatcher } from 'src/app/state-and-dispatcher';
 export class FieldComponent implements OnInit{
   @Input() field: Field;
 
-  @Input() firstIndex: number;
+  @Input() isFirst: boolean;
 
   public selected: string = '';
 
@@ -20,7 +20,7 @@ export class FieldComponent implements OnInit{
   ) {}
 
   ngOnInit(){
-    if(this.firstIndex === 0){
+    if(this.isFirst){
       this.selectField();
     }
   }

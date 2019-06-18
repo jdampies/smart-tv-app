@@ -3,7 +3,7 @@
   class="image-grid">
   <div
     class="image-container"
-    *ngFor="let project of projects;"
+    *ngFor="let project of projects; trackBy: trackProject;"
     [ngStyle]="{
       'top': project.yPos + '%',
       'left': project.xPos + '%'

@@ -9,4 +9,9 @@ import { Field } from 'src/app/interfaces/field.interface';
 export class FieldSelectorComponent {
   @Input() fields: Field[];
   constructor() {}
+
+  trackField(index, field) {
+    // console.log(field);
+    return field ? field.id : undefined;
+  }
 }

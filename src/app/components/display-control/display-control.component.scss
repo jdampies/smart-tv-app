@@ -14,7 +14,6 @@ $button-text-hover-white: #fff;
   -moz-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   opacity: 0.4;
-  will-change: opacity;
 
   &.left,
   &.right {
@@ -40,7 +39,6 @@ $button-text-hover-white: #fff;
     border-top-left-radius: 3px;
 
     animation: show 0.3s forwards;
-    will-change: transform;
 
     span {
       display: block;
